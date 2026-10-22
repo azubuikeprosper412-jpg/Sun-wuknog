@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Da Sun Wukong 404</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;background:#0a0a0a;color:#ffd700;font-family:Arial;text-align:center;overflow:hidden}
+h1{margin:10px 0 0 0;font-size:28px}
+#game{width:100%;height:70vh;background:linear-gradient(#1a1a2e,#0f0f0f);position:relative;border:3px solid #ffd700;overflow:hidden;margin:10px auto}
+#wukong{position:absolute;left:50px;bottom:20px;font-size:60px;transition:bottom 0.3s}
+.jump{bottom:180px !important}
+#enemy{position:absolute;right:-50px;bottom:20px;font-size:40px;animation:move 2s linear infinite}
+@keyframes move{0%{right:-50px}100%{right:100%}}
+#score{font-size:20px;margin-top:5px}
+button{padding:12px 25px;background:#ffd700;border:none;font-weight:bold;font-size:16px;border-radius:8px}
+</style>
+</head>
+<body>
+<h1>Da Sun Wukong 404 🔥</h1>
+<p>Error 404: King Not Found - He Found You!</p>
+<div id="game">
+<div id="wukong">🐒👑</div>
+<div id="enemy">👹</div>
+</div>
+<div id="score">Score: 0 | Port Harcourt Edition</div>
+<br>
+<button onclick="jump()">JUMP - TAP HERE</button>
+<p>Tap button to make Wukong jump over demons</p>
+
+<script>
+let score=0;
+let wukong=document.getElementById("wukong");
+let enemy=document.getElementById("enemy");
+function jump(){
+wukong.classList.add("jump");
+setTimeout(()=>{wukong.classList.remove("jump")},500);
+}
+setInterval(()=>{
+score++;
+document.getElementById("score").innerText="Score: "+score+" | Port Harcourt Edition";
+},100);
+setInterval(()=>{
+let wBottom=parseInt(window.getComputedStyle(wukong).getPropertyValue("bottom"));
+let eLeft=parseInt(window.getComputedStyle(enemy).getPropertyValue("left"));
+if(eLeft<120 && eLeft>20 && wBottom<100){
+alert("GAME OVER! Score: "+score+" - Wukong will return stronger!");
+score=0;
+}
+},10);
+document.addEventListener("keydown",jump);
+</script>
+</body>
+  </html>
